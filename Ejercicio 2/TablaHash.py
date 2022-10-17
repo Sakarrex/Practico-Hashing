@@ -7,7 +7,10 @@ class TablaHash:
     __salto = None
 
     def __init__(self,tamanio) -> None:
-        self.__arreglo = np.zeros(math.floor(tamanio/0.7),dtype=int)
+        i = math.floor(tamanio/0.7)+1
+        while not self.esPrimo(i):
+            i+=1
+        self.__arreglo = np.zeros(i,dtype=int)
         self.__salto = random.randint(1,len(self.__arreglo)-1) 
         
     
@@ -23,7 +26,7 @@ class TablaHash:
                 band = True
             j = (j+self.__salto) % 1000
             if i == j:
-                band == True
+                band = True
         if band == False:
             self.__arreglo[j] = num
         else:
@@ -38,7 +41,7 @@ class TablaHash:
     def Buscar(self,num):
         i = num % 1000 
         resultado = 0
-        if self.__arreglo[i] == 0:
+        if self.__arreglo[i] == num:
             resultado = -1
         else:
             j = i 
@@ -51,4 +54,13 @@ class TablaHash:
                 resultado = j
             else:
                 resultado = -1
+        return resultado
+    
+    def esPrimo(self,num):
+        resultado = True
+        i = 2
+        while i < num and resultado:
+            if (num%i) == 0:
+                resultado = False
+            i+=1
         return resultado
