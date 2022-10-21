@@ -7,10 +7,11 @@ class TablaHash:
     __arreglo = None
     
     def __init__(self,tamanio) -> None:
-        i = math.floor(tamanio/0.7)
+        i = math.floor(tamanio/2)
+        
         while not self.esPrimo(i):
             i+=1
-        self.__arreglo = np.empty(math.floor(i/2),dtype=Nodo)
+        self.__arreglo = np.empty(i,dtype=Nodo)
 
     def Insertar(self,num):
         i = 0
@@ -19,8 +20,8 @@ class TablaHash:
             i += int(partes[0])
             partes = partes[1:]
         
-        while i >= len(self.__arreglo):
-            i = i % 10
+        if i > len(self.__arreglo):
+            i = i % len(self.__arreglo)
         
 
         if self.__arreglo[i] == None:
@@ -47,8 +48,8 @@ class TablaHash:
             i += int(num[0])
             num = num[1:]
         
-        while i >= len(self.__arreglo):
-            i = i%10
+        if i > len(self.__arreglo):
+            i = i % len(self.__arreglo)
         
         j = 0
         aux = self.__arreglo[i]
