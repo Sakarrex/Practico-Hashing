@@ -49,7 +49,27 @@ class TablaHash:
         print("Overflow: ")
         for j in range(self.__primario,len(self.__tablaHash)):
             print(self.__tablaHash[j])
-            
+    
+    def Buscar(self,num):
+        i = str(num)[-2:]
+        i = int(i)
+        
+        if i > self.__primario:
+            i = (i % self.__primario)
+        
+        resultado = False
+        
+        if self.__tablaHash[i].isElement(num):
+            print("Esta en primario")
+            resultado = True
+        else:
+            for i in range(self.__primario,len(self.__tablaHash)):
+                if self.__tablaHash[i].isElement(num):
+                    print("Esta en overflow")
+                    resultado = True
+        
+        return resultado
+        
         
 
 

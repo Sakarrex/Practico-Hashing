@@ -6,3 +6,4 @@ if __name__ == "__main__":
     for i in range(1000):
         UnaTablaHash.Insertar(random.randint(1000,2000))
     UnaTablaHash.Mostrar()
+    print(UnaTablaHash.Buscar(int(input("num: "))))

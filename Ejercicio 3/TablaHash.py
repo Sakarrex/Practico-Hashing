@@ -1,3 +1,4 @@
+from ast import Num
 import random
 import numpy as np
 import math
@@ -31,10 +32,10 @@ class TablaHash:
         else:
             band = True
             aux = self.__arreglo[i]
+            if aux.getValor() == num:
+                band = False
             while aux.getSiguiente() != None and band == True:
-                "Terminar"
-                if aux.getValor() == num:
-                
+                if aux.getSiguiente().getValor() == num:
                     print("Clave repetida")
                     band = False
                 aux = aux.getSiguiente()
